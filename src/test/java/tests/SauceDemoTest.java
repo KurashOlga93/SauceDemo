@@ -22,8 +22,8 @@ public class SauceDemoTest {
         driver.findElement(By.name("add-to-cart")).click();
         driver.findElement(By.xpath("//*[@data-test='shopping-cart-link']")).click();
         String actualProductName = driver.findElement(By.xpath("//*[@data-test='inventory-item-name']")).getText();
-        Assert.assertEquals(actualProductName, "Sauce Labs Backpack");
         String actualProductPrice = driver.findElement(By.xpath("//*[@data-test='inventory-item-price']")).getText();
+        Assert.assertEquals(actualProductName, "Sauce Labs Backpack");
         Assert.assertEquals(actualProductPrice, "$29.99");
     }
 }
