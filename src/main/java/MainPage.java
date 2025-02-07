@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.util.List;
 
-public class MainPage {
+/*public class MainPage {
 
     WebDriver driver = new ChromeDriver();
     final WebElement userName = driver.findElement(By.id("user-name"));
@@ -29,3 +29,4 @@ public class MainPage {
     final WebElement byCss = driver.findElement(By.cssSelector("//img[@class=\"inventory_item_img\"]/@src"));
 
 }
+*/
