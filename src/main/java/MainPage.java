@@ -24,7 +24,7 @@ import java.util.List;
     final WebElement precend1 = driver.findElement(By.xpath("//input[@id='password']/preceding::input[1]"));
     final WebElement precend2 = driver.findElement(By.xpath("//input[@id='password']/preceding-sibling::input[1]"));
     final WebElement precend3 = driver.findElement(By.xpath("//*[@class='login_wrapper-inner']/following-sibling::div"));
-    final WebElement andTest = driver.findElement(By.xpath("//*[@data-test='password' and contains(@id, 'password') and contains(@name, 'password')]"))
+    final WebElement andTest = driver.findElement(By.xpath("//*[@data-test='password' and contains(@id, 'password') and contains(@name, 'password')]"));
     final WebElement byImage = driver.findElement(By.xpath("//img[@class=\"inventory_item_img\"]/@src"));
     final WebElement byCss = driver.findElement(By.cssSelector("//img[@class=\"inventory_item_img\"]/@src"));
 
