@@ -18,7 +18,7 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public void login(String username, String password){
+    public void login(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
