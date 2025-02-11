@@ -2,7 +2,6 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HeaderPage extends BasePage {
 
@@ -18,7 +17,6 @@ public class HeaderPage extends BasePage {
     }
 
     public String checkCartBudgeNumber() {
-        WebElement cartBudgeNumber = driver.findElement(CART_BUDGE);
-        return cartBudgeNumber.getText();
+        return driver.findElement(CART_BUDGE).getText();
     }
 }

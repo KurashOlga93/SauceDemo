@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 import pages.*;
 
 import java.util.concurrent.TimeUnit;
@@ -17,6 +18,8 @@ public class BaseTest implements IConstants, ITestConstants {
     CartPage cartPage;
     HeaderPage headerPage;
     CheckoutPage checkoutPage;
+    CheckoutOverviewPage checkoutOverviewPage;
+    SoftAssert softAssert;
 
     @BeforeMethod
     public void initTest() {
@@ -25,6 +28,7 @@ public class BaseTest implements IConstants, ITestConstants {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         initPages();
+        softAssert = new SoftAssert();
     }
 
     public void initPages() {
@@ -33,6 +37,7 @@ public class BaseTest implements IConstants, ITestConstants {
         cartPage = new CartPage(driver);
         headerPage = new HeaderPage(driver);
         checkoutPage = new CheckoutPage(driver);
+        checkoutOverviewPage = new CheckoutOverviewPage(driver);
     }
 
     @AfterMethod
