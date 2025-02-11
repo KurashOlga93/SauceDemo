@@ -12,7 +12,7 @@ public class CartTest extends BaseTest {
         loginPage.login(USERNAME, PASSWORD);
         productsPage.addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         headerPage.openCart();
-        cartPage.removeProductsFromCartByNames(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
+        cartPage.removeProductsFromCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         Assert.assertTrue(cartPage.itemsDoesNotExistInCart());
     }
 
@@ -24,5 +24,23 @@ public class CartTest extends BaseTest {
         headerPage.openCart();
         cartPage.clickCheckoutButton();
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE1_URL);
+    }
+
+    @Test(description = "Add product to cart and check price")
+    public void checkProductPriceInCartTest(){
+        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
+        loginPage.login(USERNAME, PASSWORD);
+        productsPage.addProductsToCart(SAUCE_LABS_BIKE_LIGHT);
+        headerPage.openCart();
+        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BIKE_LIGHT), "$9.99");
+    }
+
+    @Test(description = "Add two product and check quantity in cart")
+    public void checkQuantityTest(){
+        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
+        loginPage.login(USERNAME, PASSWORD);
+        productsPage.addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_BACKPACK);
+        headerPage.openCart();
+        Assert.assertEquals(cartPage.getProductQuantityInCart(), 2);
     }
 }

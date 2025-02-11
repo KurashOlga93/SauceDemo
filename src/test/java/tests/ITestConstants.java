@@ -4,7 +4,6 @@ public interface ITestConstants {
     String USERNAME = "standard_user";
     String PASSWORD = "secret_sauce";
     String SAUCE_LABS_BACKPACK = "Sauce Labs Backpack";
-    String SAUCE_LABS_BACKPACK_PRICE = "$29.99";
     String FIRST_NAME = "Olga";
     String LAST_NAME = "Kurash";
     String POSTAL_CODE = "12345";

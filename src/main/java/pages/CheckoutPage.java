@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-    public class CheckoutPage extends CartPage {
+    public class CheckoutPage extends HeaderPage {
 
     public static final By FIRST_NAME_INPUT = By.xpath("//*[@data-test='firstName']");
     public static final By LAST_NAME_INPUT = By.xpath("//*[@data-test='lastName']");
