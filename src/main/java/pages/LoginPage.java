@@ -13,12 +13,11 @@ public class LoginPage extends BasePage {
     public static final String EMPTY_FIELD_PASSWORD_ERROR = "Epic sadface: Password is required";
     public static final String INCORRECT_DATA_IN_FIELDS = "Epic sadface: Username and password do not match any user in this service";
 
-
     public LoginPage(WebDriver driver) {
         super(driver);
     }
 
-    public void login(String username, String password){
+    public void login(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
