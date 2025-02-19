@@ -2,9 +2,19 @@ package tests;
 
 import constants.IConstants;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class CartTest extends BaseTest {
+
+    @DataProvider(name = "products")
+    public Object[][] productsAndPrices(){
+        return new Object[][] {
+                {SAUCE_LABS_BACKPACK, "$29.99"},
+                {SAUCE_LABS_BIKE_LIGHT, "$9.99"},
+                {SAUCE_LABS_BOLT_T_SHIRT, "$15.99"}
+        };
+    }
 
     @Test(description = "Remove products from cart and check that products does not exist")
     public void removeProductFromCart(){
@@ -26,13 +36,13 @@ public class CartTest extends BaseTest {
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE1_URL);
     }
 
-    @Test(description = "Add product to cart and check price")
-    public void checkProductPriceInCartTest(){
+    @Test(dataProvider = "products", groups = "products", description = "Add product to cart and check price")
+    public void checkProductPriceInCartTest(String productName, String price){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
         loginPage.login(USERNAME, PASSWORD);
-        productsPage.addProductsToCart(SAUCE_LABS_BIKE_LIGHT);
+        productsPage.addProductsToCart(productName);
         headerPage.openCart();
-        Assert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BIKE_LIGHT), "$9.99");
+        Assert.assertEquals(cartPage.getProductPrice(productName), price);
     }
 
     @Test(description = "Add two product and check quantity in cart")
