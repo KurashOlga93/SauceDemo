@@ -10,7 +10,8 @@ public class User {
     String password;
     String username;
 
-    public User() {
+    public User(String password, String username) {
+        this.password = password;
+        this.username = username;
     }
-
 }

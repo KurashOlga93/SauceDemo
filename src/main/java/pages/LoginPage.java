@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import waiters.Waiter;
 
 import java.time.Duration;
 
@@ -22,16 +23,17 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public ProductsPage login(User user) {
-        driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
-        driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
+    public ProductsPage login(String username, String password) {
+        waiter.waitForPageOpened(driver, LOGIN_BUTTON, 15);
+        driver.findElement(USERNAME_INPUT).sendKeys(username);
+        driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();
         return new ProductsPage(driver);
     }
 
-    public ProductsPage login(String username, String password) {
-        driver.findElement(USERNAME_INPUT).sendKeys(username);
-        driver.findElement(PASSWORD_INPUT).sendKeys(password);
+    public ProductsPage login(User user) {
+        driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
+        driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
         driver.findElement(LOGIN_BUTTON).click();
         return new ProductsPage(driver);
     }
@@ -40,9 +42,9 @@ public class LoginPage extends BasePage {
         return driver.findElement(ERROR_MASSAGE).getText();
     }
 
-    public LoginPage waitForPageOpened() {
+    /*public LoginPage waitForPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
         return this;
-    }
+    }*/
 }

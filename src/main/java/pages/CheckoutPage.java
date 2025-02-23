@@ -14,10 +14,11 @@ import org.openqa.selenium.WebDriver;
         super(driver);
     }
 
-    public void userCheckout(String firstName, String lastName, String postalCode) {
+    public CheckoutOverviewPage  userCheckout(String firstName, String lastName, String postalCode) {
         driver.findElement(FIRST_NAME_INPUT).sendKeys(firstName);
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
         driver.findElement(ZIP_CODE_INPUT).sendKeys(postalCode);
         driver.findElement(CONTINUE_BUTTON).click();
+        return new CheckoutOverviewPage(driver);
     }
 }

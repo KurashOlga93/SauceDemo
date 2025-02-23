@@ -26,14 +26,16 @@ public class CartPage extends HeaderPage {
         return this;
     }
 
-    public void removeProductsFromCart(String... productNames) {
+    public CartPage removeProductsFromCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(REMOVE_BUTTON, productName))).click();
         }
+        return this;
     }
 
-    public void clickCheckoutButton() {
+    public CheckoutPage clickCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
+        return new CheckoutPage(driver);
     }
 
     public boolean itemsDoesNotExistInCart() {

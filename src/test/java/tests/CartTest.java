@@ -19,8 +19,10 @@ public class CartTest extends BaseTest {
     @Test(description = "Remove products from cart and check that products does not exist")
     public void removeProductFromCart() {
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
-        productsPage.addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
+        loginPage
+                //.waitForPageOpened()
+                .login(USERNAME, PASSWORD)
+                .addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         headerPage.openCart();
         cartPage.removeProductsFromCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         Assert.assertTrue(cartPage.itemsDoesNotExistInCart());
@@ -29,8 +31,9 @@ public class CartTest extends BaseTest {
     @Test(description = "Add product to cart and click Continue. Check the next page exist")
     public void continueCheckout() {
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
-        productsPage.addProductsToCart(SAUCE_LABS_BIKE_LIGHT);
+        loginPage
+                .login(USERNAME, PASSWORD)
+                .addProductsToCart(SAUCE_LABS_BIKE_LIGHT);
         headerPage.openCart();
         cartPage.clickCheckoutButton();
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE1_URL);
@@ -41,7 +44,7 @@ public class CartTest extends BaseTest {
         loginPage
                 .openPage(IConstants.LOGIN_PAGE_URL);
         loginPage
-                .waitForPageOpened()
+                //.waitForPageOpened()
                 .login(USERNAME, PASSWORD)
                 .addProductsToCart(productName);
         headerPage.openCart();

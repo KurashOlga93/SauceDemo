@@ -15,8 +15,9 @@ public class CheckoutTest extends CartTest {
                 .addProductsToCart(SAUCE_LABS_ONESIE);
         headerPage.openCart();
         cartPage.clickCheckoutButton();
-        checkoutPage.userCheckout(FIRST_NAME, LAST_NAME, POSTAL_CODE);
-        checkoutOverviewPage.clickFinishButton();
+        checkoutPage
+                .userCheckout(FIRST_NAME, LAST_NAME, POSTAL_CODE)
+                .clickFinishButton();
         Assert.assertEquals(checkoutOverviewPage.getSuccessText(),"Thank you for your order!");
     }
 }

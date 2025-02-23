@@ -29,14 +29,16 @@ public class LoginTest extends Preconditions {
     @Test
     public void loginWithEmptyFieldsTest(){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(userWithEmptyFields);
+        loginPage
+                .login(userWithEmptyFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
     @Test
     public void loginWithIncorrectFieldsTest(){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(userWithIncorrectFields);
+        loginPage
+                .login(userWithIncorrectFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), INCORRECT_DATA_IN_FIELDS);
     }
 
