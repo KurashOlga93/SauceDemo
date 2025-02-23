@@ -21,6 +21,11 @@ public class CartPage extends HeaderPage {
         super(driver);
     }
 
+    public CartPage openCartPage(String url) {
+        driver.get(url);
+        return this;
+    }
+
     public void removeProductsFromCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(REMOVE_BUTTON, productName))).click();
