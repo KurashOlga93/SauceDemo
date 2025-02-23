@@ -20,7 +20,12 @@ public class BaseTest implements IConstants, ITestConstants {
     CheckoutPage checkoutPage;
     CheckoutOverviewPage checkoutOverviewPage;
     SoftAssert softAssert;
+    LoginPageFactory loginPageFactory;
 
+
+    /**
+     * This is initialisation of pages
+     */
     @BeforeMethod
     public void initTest() {
         WebDriverManager.chromedriver().setup();
@@ -38,6 +43,7 @@ public class BaseTest implements IConstants, ITestConstants {
         headerPage = new HeaderPage(driver);
         checkoutPage = new CheckoutPage(driver);
         checkoutOverviewPage = new CheckoutOverviewPage(driver);
+        loginPageFactory = new LoginPageFactory(driver);
     }
 
     @AfterMethod

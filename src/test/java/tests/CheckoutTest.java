@@ -8,9 +8,11 @@ public class CheckoutTest extends CartTest {
 
     @Test(description = "User puts the product in the cart, checkout and text about a successful purchase is displayed")
     public void userCheckout(){
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(USERNAME, PASSWORD);
-        productsPage.addProductsToCart(SAUCE_LABS_ONESIE);
+        loginPage
+                .openPage(IConstants.LOGIN_PAGE_URL);
+        loginPage
+                .login(USERNAME, PASSWORD)
+                .addProductsToCart(SAUCE_LABS_ONESIE);
         headerPage.openCart();
         cartPage.clickCheckoutButton();
         checkoutPage.userCheckout(FIRST_NAME, LAST_NAME, POSTAL_CODE);
