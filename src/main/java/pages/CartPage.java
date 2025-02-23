@@ -21,11 +21,24 @@ public class CartPage extends HeaderPage {
         super(driver);
     }
 
+    /**
+     * Open cart page cart page.
+     *
+     * @param url the url
+     * @return the cart page
+     */
     public CartPage openCartPage(String url) {
+        waiter.waitForPageOpened(driver, CHECKOUT_BUTTON, 15);
         driver.get(url);
         return this;
     }
 
+    /**
+     * Remove products from cart cart page.
+     *
+     * @param productNames the product names
+     * @return the cart page
+     */
     public CartPage removeProductsFromCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(REMOVE_BUTTON, productName))).click();
@@ -33,28 +46,61 @@ public class CartPage extends HeaderPage {
         return this;
     }
 
+    /**
+     * Click checkout button checkout page.
+     *
+     * @return the checkout page
+     */
     public CheckoutPage clickCheckoutButton() {
         driver.findElement(CHECKOUT_BUTTON).click();
         return new CheckoutPage(driver);
     }
 
+    /**
+     * Items does not exist in cart boolean.
+     *
+     * @return the boolean
+     */
     public boolean itemsDoesNotExistInCart() {
         List<WebElement> itemsInCart = driver.findElements(CART_ITEM);
         return itemsInCart.isEmpty();
     }
 
+    /**
+     * Gets product price.
+     *
+     * @param productName the product name
+     * @return the product price
+     */
     public String getProductPrice(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
     }
 
+    /**
+     * Gets product name.
+     *
+     * @param productName the product name
+     * @return the product name
+     */
     public String getProductName(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_NAME, productName))).getText();
     }
 
+    /**
+     * Gets product quantity in cart.
+     *
+     * @return the product quantity in cart
+     */
     public Integer getProductQuantityInCart() {
         return driver.findElements(By.xpath(CART_ITEM_CONTAINER)).size();
     }
 
+    /**
+     * Is product displayed boolean.
+     *
+     * @param productName the product name
+     * @return the boolean
+     */
     public boolean isProductDisplayed(String productName) {
         return !driver.findElements(By.xpath(String.format(PRODUCT_ITEM, productName))).isEmpty();
     }

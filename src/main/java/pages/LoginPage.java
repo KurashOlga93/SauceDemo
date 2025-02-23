@@ -3,11 +3,6 @@ package pages;
 import entity.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import waiters.Waiter;
-
-import java.time.Duration;
 
 public class LoginPage extends BasePage {
 
@@ -23,6 +18,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
+    /**
+     * Login products page.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the products page
+     */
     public ProductsPage login(String username, String password) {
         waiter.waitForPageOpened(driver, LOGIN_BUTTON, 15);
         driver.findElement(USERNAME_INPUT).sendKeys(username);
@@ -31,6 +33,12 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
+    /**
+     * Login products page.
+     *
+     * @param user the user
+     * @return the products page
+     */
     public ProductsPage login(User user) {
         driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
         driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
@@ -38,6 +46,11 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
+    /**
+     * Gets error message text.
+     *
+     * @return the error message text
+     */
     public String getErrorMessageText() {
         return driver.findElement(ERROR_MASSAGE).getText();
     }

@@ -3,7 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-    public class CheckoutPage extends HeaderPage {
+public class CheckoutPage extends HeaderPage {
 
     public static final By FIRST_NAME_INPUT = By.xpath("//*[@data-test='firstName']");
     public static final By LAST_NAME_INPUT = By.xpath("//*[@data-test='lastName']");
@@ -14,7 +14,16 @@ import org.openqa.selenium.WebDriver;
         super(driver);
     }
 
-    public CheckoutOverviewPage  userCheckout(String firstName, String lastName, String postalCode) {
+    /**
+     * User checkout checkout overview page.
+     *
+     * @param firstName  the first name
+     * @param lastName   the last name
+     * @param postalCode the postal code
+     * @return the checkout overview page
+     */
+    public CheckoutOverviewPage userCheckout(String firstName, String lastName, String postalCode) {
+        waiter.waitForPageOpened(driver, CONTINUE_BUTTON, 15);
         driver.findElement(FIRST_NAME_INPUT).sendKeys(firstName);
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
         driver.findElement(ZIP_CODE_INPUT).sendKeys(postalCode);

@@ -16,6 +16,12 @@ public class ProductsPage extends HeaderPage {
         super(driver);
     }
 
+    /**
+     * Add products to cart products page.
+     *
+     * @param productNames the product names
+     * @return the products page
+     */
     public ProductsPage addProductsToCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).click();
@@ -23,14 +29,32 @@ public class ProductsPage extends HeaderPage {
         return this;
     }
 
+    /**
+     * Is add to cart button displayed boolean.
+     *
+     * @param productName the product name
+     * @return the boolean
+     */
     public boolean isAddToCartButtonDisplayed(String productName) {
         return driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).isDisplayed();
     }
 
+    /**
+     * Is remove button displayed boolean.
+     *
+     * @param productName the product name
+     * @return the boolean
+     */
     public boolean isRemoveButtonDisplayed(String productName) {
         return driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).isDisplayed();
     }
 
+    /**
+     * Gets product price.
+     *
+     * @param productName the product name
+     * @return the product price
+     */
     public String getProductPrice(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
     }

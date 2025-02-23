@@ -20,7 +20,6 @@ public class CartTest extends BaseTest {
     public void removeProductFromCart() {
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
         loginPage
-                //.waitForPageOpened()
                 .login(USERNAME, PASSWORD)
                 .addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         headerPage.openCart();

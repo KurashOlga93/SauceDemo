@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -25,13 +24,24 @@ public class LoginPageFactory extends BasePage {
 
     @FindBy(xpath = "//button[contains(.,'Add')]")
     WebElement addButton;
+
     @FindBy(xpath = "//button[contains(.,'Delete')]")
     WebElement deleteButton;
 
+    /**
+     * Gets add button.
+     *
+     * @return the add button
+     */
     public WebElement getAddButton() {
         return addButton;
     }
 
+    /**
+     * Gets delete button.
+     *
+     * @return the delete button
+     */
     public WebElement getDeleteButton() {
         return deleteButton;
     }
@@ -44,16 +54,32 @@ public class LoginPageFactory extends BasePage {
         super(driver);
     }
 
+    /**
+     * Login.
+     *
+     * @param username the username
+     * @param password the password
+     */
     public void login(String username, String password) {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
     }
 
+    /**
+     * Gets error message text.
+     *
+     * @return the error message text
+     */
     public String getErrorMessageText() {
         return errorMessage.getText();
     }
 
+    /**
+     * Wait for page opened login page factory.
+     *
+     * @return the login page factory
+     */
     public LoginPageFactory waitForPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOf(loginButton));
