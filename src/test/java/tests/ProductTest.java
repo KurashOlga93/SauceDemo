@@ -11,7 +11,6 @@ public class ProductTest extends BaseTest {
         loginPage
                 .openPage(IConstants.LOGIN_PAGE_URL);
         loginPage
-                //.waitForPageOpened()
                 .login(USERNAME, PASSWORD)
                 .addProductsToCart(SAUCE_LABS_BACKPACK);
         headerPage.openCart();

@@ -22,8 +22,8 @@ public class CartTest extends BaseTest {
         loginPage
                 .login(USERNAME, PASSWORD)
                 .addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
-        headerPage.openCart();
-        cartPage.removeProductsFromCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
+        headerPage.openCart()
+                .removeProductsFromCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         Assert.assertTrue(cartPage.itemsDoesNotExistInCart());
     }
 
@@ -33,8 +33,8 @@ public class CartTest extends BaseTest {
         loginPage
                 .login(USERNAME, PASSWORD)
                 .addProductsToCart(SAUCE_LABS_BIKE_LIGHT);
-        headerPage.openCart();
-        cartPage.clickCheckoutButton();
+        headerPage.openCart()
+                .clickCheckoutButton();
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE1_URL);
     }
 

@@ -22,7 +22,7 @@ public class CartPage extends HeaderPage {
     }
 
     /**
-     * Open cart page cart page.
+     * Open cart page.
      *
      * @param url the url
      * @return the cart page
@@ -34,7 +34,7 @@ public class CartPage extends HeaderPage {
     }
 
     /**
-     * Remove products from cart cart page.
+     * Remove products from cart.
      *
      * @param productNames the product names
      * @return the cart page

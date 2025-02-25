@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+@Getter
 
 public class LoginPageFactory extends BasePage {
 
@@ -27,24 +30,6 @@ public class LoginPageFactory extends BasePage {
 
     @FindBy(xpath = "//button[contains(.,'Delete')]")
     WebElement deleteButton;
-
-    /**
-     * Gets add button.
-     *
-     * @return the add button
-     */
-    public WebElement getAddButton() {
-        return addButton;
-    }
-
-    /**
-     * Gets delete button.
-     *
-     * @return the delete button
-     */
-    public WebElement getDeleteButton() {
-        return deleteButton;
-    }
 
     public static final String EMPTY_FIELD_USERNAME_ERROR = "Epic sadface: Username is required";
     public static final String EMPTY_FIELD_PASSWORD_ERROR = "Epic sadface: Password is required";
