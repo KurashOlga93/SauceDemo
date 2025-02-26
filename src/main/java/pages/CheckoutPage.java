@@ -23,7 +23,6 @@ public class CheckoutPage extends HeaderPage {
      * @return the checkout overview page
      */
     public CheckoutOverviewPage userCheckout(String firstName, String lastName, String postalCode) {
-        waiter.waitForPageOpened(driver, CONTINUE_BUTTON, 15);
         driver.findElement(FIRST_NAME_INPUT).sendKeys(firstName);
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
         driver.findElement(ZIP_CODE_INPUT).sendKeys(postalCode);

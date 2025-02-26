@@ -18,7 +18,6 @@ public class HeaderPage extends BasePage {
      * @return the cart page
      */
     public CartPage openCart() {
-        waiter.waitForPageOpened(driver, CART_BUTTON, 15);
         driver.findElement(CART_BUTTON).click();
         return new CartPage(driver);
     }

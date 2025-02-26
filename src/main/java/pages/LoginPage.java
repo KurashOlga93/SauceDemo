@@ -3,6 +3,7 @@ package pages;
 import entity.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import waiters.Waiter;
 
 public class LoginPage extends BasePage {
 
@@ -26,7 +27,6 @@ public class LoginPage extends BasePage {
      * @return the products page
      */
     public ProductsPage login(String username, String password) {
-        waiter.waitForPageOpened(driver, LOGIN_BUTTON, 15);
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
         driver.findElement(LOGIN_BUTTON).click();

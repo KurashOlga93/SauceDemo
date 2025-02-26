@@ -28,7 +28,6 @@ public class CartPage extends HeaderPage {
      * @return the cart page
      */
     public CartPage openCartPage(String url) {
-        waiter.waitForPageOpened(driver, CHECKOUT_BUTTON, 15);
         driver.get(url);
         return this;
     }

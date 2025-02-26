@@ -16,7 +16,6 @@ public class CheckoutOverviewPage extends HeaderPage {
      * Click finish button.
      */
     public void clickFinishButton(){
-        waiter.waitForPageOpened(driver, FINISH_BUTTON, 15);
         driver.findElement(FINISH_BUTTON).click();
     }
 
