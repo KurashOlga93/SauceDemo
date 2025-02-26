@@ -8,36 +8,22 @@ public class ProductTest extends BaseTest {
 
     @Test(description = "Add product to cart and check name and price in cart")
     public void addProductToCartTest(){
-        loginPage
-                .openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(SAUCE_LABS_BACKPACK);
-        headerPage.openCart();
+        productSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BACKPACK);
+        cartSteps.openCartAndWaitForPageOpened();
         softAssert.assertEquals(cartPage.getProductName(SAUCE_LABS_BACKPACK), SAUCE_LABS_BACKPACK);
         softAssert.assertEquals(cartPage.getProductPrice(SAUCE_LABS_BACKPACK), "$29.99");
         softAssert.assertAll();
     }
 
-    /**
-     *
-     */
-    @Test(description = "Add three products to cart and check number on cart icon")
+    @Test(description = "Add two products to cart and check number on cart icon")
     public void addTwoProductsToCartTest(){
-        loginPage
-                .openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(SAUCE_LABS_FLEECE_JACKET, SAUCE_LABS_BOLT_T_SHIRT, TEST_ALL_THE_THINGS_T_SHIRT_RED);
-        Assert.assertEquals(headerPage.checkCartBudgeNumber(), "3");
+        productSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BOLT_T_SHIRT, TEST_ALL_THE_THINGS_T_SHIRT_RED);
+        Assert.assertEquals(headerPage.checkCartBudgeNumber(), "2");
     }
 
     @Test(description = "Check that Add to cart button displayed")
     public void isAddToCartButtonDisplayedTest(){
-        loginPage
-                .openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD);
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
         Assert.assertTrue(productsPage.isAddToCartButtonDisplayed(SAUCE_LABS_FLEECE_JACKET));
     }
 

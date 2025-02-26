@@ -4,6 +4,7 @@ import constants.IConstants;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import steps.CartSteps;
 
 public class CartTest extends BaseTest {
 
@@ -18,46 +19,30 @@ public class CartTest extends BaseTest {
 
     @Test(description = "Remove products from cart and check that products does not exist")
     public void removeProductFromCart() {
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
-        headerPage.openCart()
-                .removeProductsFromCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
+        productSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
+        cartSteps.openCartAndRemoveProductsFromCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_ONESIE);
         Assert.assertTrue(cartPage.itemsDoesNotExistInCart());
     }
 
     @Test(description = "Add product to cart and click Continue. Check the next page exist")
     public void continueCheckout() {
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(SAUCE_LABS_BIKE_LIGHT);
-        headerPage.openCart()
-                .clickCheckoutButton();
+        productSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BIKE_LIGHT);
+        cartSteps.openCartAndClickCheckout();
         Assert.assertEquals(driver.getCurrentUrl(), CHECKOUT_PAGE1_URL);
     }
 
     @Test(dataProvider = "products", groups = "products", description = "Add product to cart and check price")
     public void checkProductPriceInCartTest(String productName, String price) {
-        loginPage
-                .openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                //.waitForPageOpened()
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(productName);
-        headerPage.openCart();
+        loginSteps.loginAndWaitForPageOpened(USERNAME, PASSWORD);
+        productsPage.addProductsToCart(productName);
+        cartSteps.openCartAndWaitForPageOpened();
         Assert.assertEquals(cartPage.getProductPrice(productName), price);
     }
 
     @Test(description = "Add two product and check quantity in cart")
     public void checkQuantityTest() {
-        loginPage
-                .openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_BACKPACK);
-        headerPage.openCart();
+        productSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_BIKE_LIGHT, SAUCE_LABS_BACKPACK);
+        cartSteps.openCartAndWaitForPageOpened();
         Assert.assertEquals(cartPage.getProductQuantityInCart(), 2);
     }
 }

@@ -20,6 +20,16 @@ public class LoginPage extends BasePage {
     }
 
     /**
+     * Wait for login page opened login page.
+     *
+     * @return the login page
+     */
+    public LoginPage waitForLoginPageOpened() {
+        Waiter.waitForPageOpened(driver, LOGIN_BUTTON, 15);
+        return this;
+    }
+
+    /**
      * Login products page.
      *
      * @param username the username
