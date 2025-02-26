@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import pages.*;
+import steps.LoginSteps;
+import steps.ProductSteps;
 
 import java.util.concurrent.TimeUnit;
 
@@ -21,6 +23,8 @@ public class BaseTest implements IConstants, ITestConstants {
     CheckoutOverviewPage checkoutOverviewPage;
     SoftAssert softAssert;
     LoginPageFactory loginPageFactory;
+    ProductSteps productSteps;
+    LoginSteps loginSteps;
 
 
     /**
@@ -44,6 +48,8 @@ public class BaseTest implements IConstants, ITestConstants {
         checkoutPage = new CheckoutPage(driver);
         checkoutOverviewPage = new CheckoutOverviewPage(driver);
         loginPageFactory = new LoginPageFactory(driver);
+        loginSteps = new LoginSteps(driver);
+        productSteps = new ProductSteps(driver);
     }
 
     @AfterMethod

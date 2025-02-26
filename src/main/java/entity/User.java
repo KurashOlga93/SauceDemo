@@ -1,16 +1,15 @@
 package entity;
 
-import lombok.Builder;
-import lombok.Data;
+import lombok.*;
 
 @Data
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class User {
 
     String password;
     String username;
-
-    public User() {
-    }
 
 }

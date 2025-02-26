@@ -11,7 +11,6 @@ public class ProductTest extends BaseTest {
         loginPage
                 .openPage(IConstants.LOGIN_PAGE_URL);
         loginPage
-                .waitForPageOpened()
                 .login(USERNAME, PASSWORD)
                 .addProductsToCart(SAUCE_LABS_BACKPACK);
         headerPage.openCart();
@@ -44,11 +43,7 @@ public class ProductTest extends BaseTest {
 
     @Test(description = "Add product to cart and check remove button displayed")
     public void isRemoveButtonDisplayedTest(){
-        loginPage
-                .openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(USERNAME, PASSWORD)
-                .addProductsToCart(SAUCE_LABS_FLEECE_JACKET);
+        productSteps.loginAndAddProductToCart(USERNAME, PASSWORD, SAUCE_LABS_FLEECE_JACKET);
         Assert.assertTrue(productsPage.isRemoveButtonDisplayed(SAUCE_LABS_FLEECE_JACKET));
     }
 }

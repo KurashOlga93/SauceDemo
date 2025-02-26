@@ -12,31 +12,33 @@ public class LoginTest extends Preconditions {
     public static final String EMPTY_FIELD_PASSWORD_ERROR = "Epic sadface: Password is required";
     public static final String INCORRECT_DATA_IN_FIELDS = "Epic sadface: Username and password do not match any user in this service";
 
-    @Test
+    @Test(description = "Login with empty username field and check validation.")
     public void loginWithEmptyUsernameTest(){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
         loginPage.login(userWithEmptyUsername);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
-    @Test
+    @Test(description = "Login with empty password field and check validation.")
     public void loginWithEmptyPasswordTest(){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
         loginPage.login(userWithEmptyPassword);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_PASSWORD_ERROR);
     }
 
-    @Test
+    @Test(description = "Login with empty fields and check validation.")
     public void loginWithEmptyFieldsTest(){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(userWithEmptyFields);
+        loginPage
+                .login(userWithEmptyFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
-    @Test
+    @Test(description = "Login with invalid data in fields and check validation.")
     public void loginWithIncorrectFieldsTest(){
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(userWithIncorrectFields);
+        loginPage
+                .login(userWithIncorrectFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), INCORRECT_DATA_IN_FIELDS);
     }
 

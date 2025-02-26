@@ -3,10 +3,7 @@ package pages;
 import entity.User;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
+import waiters.Waiter;
 
 public class LoginPage extends BasePage {
 
@@ -22,13 +19,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    public ProductsPage login(User user) {
-        driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
-        driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
-        driver.findElement(LOGIN_BUTTON).click();
-        return new ProductsPage(driver);
-    }
-
+    /**
+     * Login products page.
+     *
+     * @param username the username
+     * @param password the password
+     * @return the products page
+     */
     public ProductsPage login(String username, String password) {
         driver.findElement(USERNAME_INPUT).sendKeys(username);
         driver.findElement(PASSWORD_INPUT).sendKeys(password);
@@ -36,13 +33,31 @@ public class LoginPage extends BasePage {
         return new ProductsPage(driver);
     }
 
+    /**
+     * Login products page.
+     *
+     * @param user the user
+     * @return the products page
+     */
+    public ProductsPage login(User user) {
+        driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
+        driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
+        driver.findElement(LOGIN_BUTTON).click();
+        return new ProductsPage(driver);
+    }
+
+    /**
+     * Gets error message text.
+     *
+     * @return the error message text
+     */
     public String getErrorMessageText() {
         return driver.findElement(ERROR_MASSAGE).getText();
     }
 
-    public LoginPage waitForPageOpened() {
+    /*public LoginPage waitForPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOfElementLocated(LOGIN_BUTTON));
         return this;
-    }
+    }*/
 }

@@ -1,6 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,6 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
+@Getter
 
 public class LoginPageFactory extends BasePage {
 
@@ -25,16 +27,9 @@ public class LoginPageFactory extends BasePage {
 
     @FindBy(xpath = "//button[contains(.,'Add')]")
     WebElement addButton;
+
     @FindBy(xpath = "//button[contains(.,'Delete')]")
     WebElement deleteButton;
-
-    public WebElement getAddButton() {
-        return addButton;
-    }
-
-    public WebElement getDeleteButton() {
-        return deleteButton;
-    }
 
     public static final String EMPTY_FIELD_USERNAME_ERROR = "Epic sadface: Username is required";
     public static final String EMPTY_FIELD_PASSWORD_ERROR = "Epic sadface: Password is required";
@@ -44,16 +39,32 @@ public class LoginPageFactory extends BasePage {
         super(driver);
     }
 
+    /**
+     * Login.
+     *
+     * @param username the username
+     * @param password the password
+     */
     public void login(String username, String password) {
         usernameInput.sendKeys(username);
         passwordInput.sendKeys(password);
         loginButton.click();
     }
 
+    /**
+     * Gets error message text.
+     *
+     * @return the error message text
+     */
     public String getErrorMessageText() {
         return errorMessage.getText();
     }
 
+    /**
+     * Wait for page opened login page factory.
+     *
+     * @return the login page factory
+     */
     public LoginPageFactory waitForPageOpened() {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         wait.until(ExpectedConditions.visibilityOf(loginButton));

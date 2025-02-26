@@ -12,10 +12,21 @@ public class HeaderPage extends BasePage {
     public static final By CART_BUTTON = By.xpath("//*[@data-test='shopping-cart-link']");
     public static final By CART_BUDGE = By.xpath("//*[@data-test='shopping-cart-badge']");
 
-    public void openCart() {
+    /**
+     * Open cart cart page.
+     *
+     * @return the cart page
+     */
+    public CartPage openCart() {
         driver.findElement(CART_BUTTON).click();
+        return new CartPage(driver);
     }
 
+    /**
+     * Check cart budge number string.
+     *
+     * @return the string
+     */
     public String checkCartBudgeNumber() {
         return driver.findElement(CART_BUDGE).getText();
     }
