@@ -1,5 +1,6 @@
 package steps;
 
+import entity.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
@@ -17,10 +18,22 @@ public class ProductSteps {
     }
 
     @Step("Login and add product to cart")
-    public ProductSteps loginAndAddProductToCart(String username, String password, String productName) {
+    public ProductSteps loginAndAddProductToCart (String username, String password, String... productNames) {
         loginPage.openPage(LOGIN_PAGE_URL);
-        loginPage.login(username, password);
-        productsPage.addProductsToCart(productName);
+        loginPage
+                .waitForLoginPageOpened()
+                .login(username, password);
+        productsPage.addProductsToCart(productNames);
+        return this;
+    }
+
+    @Step("Login and add product to cart")
+    public ProductSteps loginAndAddProductToCart (User user, String... productNames) {
+        loginPage.openPage(LOGIN_PAGE_URL);
+        loginPage
+                .waitForLoginPageOpened()
+                .login(user);
+        productsPage.addProductsToCart(productNames);
         return this;
     }
 }

@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.asserts.SoftAssert;
 import pages.*;
+import steps.CartSteps;
+import steps.CheckoutSteps;
 import steps.LoginSteps;
 import steps.ProductSteps;
 
@@ -25,6 +27,8 @@ public class BaseTest implements IConstants, ITestConstants {
     LoginPageFactory loginPageFactory;
     ProductSteps productSteps;
     LoginSteps loginSteps;
+    CartSteps cartSteps;
+    CheckoutSteps checkoutSteps;
 
 
     /**
@@ -50,6 +54,8 @@ public class BaseTest implements IConstants, ITestConstants {
         loginPageFactory = new LoginPageFactory(driver);
         loginSteps = new LoginSteps(driver);
         productSteps = new ProductSteps(driver);
+        cartSteps = new CartSteps(driver);
+        checkoutSteps = new CheckoutSteps(driver);
     }
 
     @AfterMethod

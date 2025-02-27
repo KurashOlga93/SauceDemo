@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import waiters.Waiter;
 
 public class ProductsPage extends HeaderPage {
 

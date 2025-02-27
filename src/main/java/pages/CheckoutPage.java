@@ -2,6 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import waiters.Waiter;
 
 public class CheckoutPage extends HeaderPage {
 
@@ -12,6 +13,11 @@ public class CheckoutPage extends HeaderPage {
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
+    }
+
+    public CheckoutPage waitForCheckoutPageOpened() {
+        Waiter.waitForPageOpened(driver, CONTINUE_BUTTON, 15);
+        return this;
     }
 
     /**

@@ -14,35 +14,29 @@ public class LoginTest extends Preconditions {
 
     @Test(description = "Login with empty username field and check validation.")
     public void loginWithEmptyUsernameTest(){
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(userWithEmptyUsername);
+        loginSteps.loginAndWaitForPageOpened(userWithEmptyUsername);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
     @Test(description = "Login with empty password field and check validation.")
     public void loginWithEmptyPasswordTest(){
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage.login(userWithEmptyPassword);
+        loginSteps.loginAndWaitForPageOpened(userWithEmptyPassword);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_PASSWORD_ERROR);
     }
 
     @Test(description = "Login with empty fields and check validation.")
     public void loginWithEmptyFieldsTest(){
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(userWithEmptyFields);
+        loginSteps.loginAndWaitForPageOpened(userWithEmptyFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), EMPTY_FIELD_USERNAME_ERROR);
     }
 
     @Test(description = "Login with invalid data in fields and check validation.")
     public void loginWithIncorrectFieldsTest(){
-        loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        loginPage
-                .login(userWithIncorrectFields);
+        loginSteps.loginAndWaitForPageOpened(userWithIncorrectFields);
         Assert.assertEquals(loginPage.getErrorMessageText(), INCORRECT_DATA_IN_FIELDS);
     }
 
-    @Test
+    /*@Test
     public void loginWithoutPageFactory(){
         driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
         WebElement addButton = driver.findElement(By.xpath("//button[contains(.,'Add')]"));
@@ -53,6 +47,7 @@ public class LoginTest extends Preconditions {
         addButton.click();
         deleteButton.click();
     }
+    */
 
     @Test
     public void loginWithPageFactory(){
