@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,6 +8,7 @@ import waiters.Waiter;
 
 import java.util.List;
 
+@Log4j2
 public class CartPage extends HeaderPage {
 
     private static final String PRODUCT_ITEM = "//*[text()='%s']/ancestor::*[@class=\"cart_item\"]";
@@ -40,6 +42,7 @@ public class CartPage extends HeaderPage {
      */
     public CartPage openCartPage(String url) {
         driver.get(url);
+        log.info("Open Cart Page URL {}", url);
         return this;
     }
 
@@ -52,6 +55,7 @@ public class CartPage extends HeaderPage {
     public CartPage removeProductsFromCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(REMOVE_BUTTON, productName))).click();
+            log.info("Remove product(s) '{}' from cart", productName);
         }
         return this;
     }
@@ -83,7 +87,9 @@ public class CartPage extends HeaderPage {
      * @return the product price
      */
     public String getProductPrice(String productName) {
-        return driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        String productPrice = driver.findElement(By.xpath(String.format(PRODUCT_PRICE, productName))).getText();
+        log.info("Get price for product: {}. Price is: {}", productName, productPrice);
+        return productPrice;
     }
 
     /**
@@ -94,6 +100,7 @@ public class CartPage extends HeaderPage {
      */
     public String getProductName(String productName) {
         return driver.findElement(By.xpath(String.format(PRODUCT_NAME, productName))).getText();
+        //log.info("Product name is: {}", productName);
     }
 
     /**
@@ -101,8 +108,10 @@ public class CartPage extends HeaderPage {
      *
      * @return the product quantity in cart
      */
-    public Integer getProductQuantityInCart() {
-        return driver.findElements(By.xpath(CART_ITEM_CONTAINER)).size();
+    public int getProductQuantityInCart() {
+        int productQuantity = driver.findElements(By.xpath(CART_ITEM_CONTAINER)).size();
+        log.info("Get product quantity: {}", productQuantity);
+        return productQuantity;
     }
 
     /**
