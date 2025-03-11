@@ -3,6 +3,7 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import waiters.Waiter;
 
 import java.util.List;
 
@@ -19,6 +20,16 @@ public class CartPage extends HeaderPage {
 
     public CartPage(WebDriver driver) {
         super(driver);
+    }
+
+    /**
+     * Wait for cart page opened cart page.
+     *
+     * @return the cart page
+     */
+    public CartPage waitForCartPageOpened() {
+        Waiter.waitForPageOpened(driver, CHECKOUT_BUTTON, 15);
+        return this;
     }
 
     /**

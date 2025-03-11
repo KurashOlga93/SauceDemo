@@ -10,18 +10,17 @@ import waiters.Waiter;
 
 public class LoginSteps {
     private LoginPage loginPage;
-    Waiter waiter = new Waiter();
-    WebDriver driver = new ChromeDriver();
 
     public LoginSteps(WebDriver driver) {
         loginPage = new LoginPage(driver);
     }
 
     @Step("Login and wait for page loaded")
-    public LoginSteps loginAndWaitForPageOpened (String username, String password) {
+    public LoginSteps loginAndWaitForPageOpened(String username, String password) {
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
-        Waiter.waitForPageOpened(driver, LOGIN);
-        loginPage.login(username, password);
+        loginPage
+                .waitForLoginPageOpened()
+                .login(username, password);
         return this;
     }
 
@@ -29,6 +28,7 @@ public class LoginSteps {
     public LoginSteps loginAndWaitForPageOpened(User user) {
         loginPage.openPage(IConstants.LOGIN_PAGE_URL);
         loginPage
+                .waitForLoginPageOpened()
                 .login(user);
         return this;
     }
