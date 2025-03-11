@@ -16,14 +16,14 @@ public class CartSteps {
     }
 
     @Step("Open cart and wait for page opened")
-    public CartSteps openCartAndWaitForPageOpened () {
+    public CartSteps openCartAndWaitForPageOpened() {
         headerPage.openCart();
         cartPage.waitForCartPageOpened();
         return this;
     }
 
     @Step("Open cart, wait for page opened and click Checkout")
-    public CartSteps openCartAndClickCheckout () {
+    public CartSteps openCartAndClickCheckout() {
         headerPage.openCart();
         cartPage.waitForCartPageOpened()
                 .clickCheckoutButton();
@@ -31,7 +31,7 @@ public class CartSteps {
     }
 
     @Step("Open cart and remove products from cart")
-    public CartSteps openCartAndRemoveProductsFromCart (String... productNames) {
+    public CartSteps openCartAndRemoveProductsFromCart(String... productNames) {
         headerPage.openCart();
         cartPage.waitForCartPageOpened()
                 .removeProductsFromCart(productNames);

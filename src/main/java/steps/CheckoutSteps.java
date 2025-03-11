@@ -13,7 +13,7 @@ public class CheckoutSteps {
     }
 
     @Step("Open checkout page, fill the field and finish checkout")
-    public CheckoutSteps userCheckoutWithCorrectDataAndClickFinish (String firstName, String lastName, String postalCode) {
+    public CheckoutSteps userCheckoutWithCorrectDataAndClickFinish(String firstName, String lastName, String postalCode) {
         checkoutPage.userCheckout(firstName, lastName, postalCode)
                 .waitForCheckoutOverviewPageOpened()
                 .clickFinishButton();

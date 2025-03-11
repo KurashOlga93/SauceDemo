@@ -18,7 +18,7 @@ public class ProductSteps {
     }
 
     @Step("Login and add product to cart")
-    public ProductSteps loginAndAddProductToCart (String username, String password, String... productNames) {
+    public ProductSteps loginAndAddProductToCart(String username, String password, String... productNames) {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage
                 .waitForLoginPageOpened()
@@ -28,7 +28,7 @@ public class ProductSteps {
     }
 
     @Step("Login and add product to cart")
-    public ProductSteps loginAndAddProductToCart (User user, String... productNames) {
+    public ProductSteps loginAndAddProductToCart(User user, String... productNames) {
         loginPage.openPage(LOGIN_PAGE_URL);
         loginPage
                 .waitForLoginPageOpened()
