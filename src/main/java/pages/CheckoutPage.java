@@ -1,9 +1,11 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import waiters.Waiter;
 
+@Log4j2
 public class CheckoutPage extends HeaderPage {
 
     public static final By FIRST_NAME_INPUT = By.xpath("//*[@data-test='firstName']");
@@ -17,6 +19,7 @@ public class CheckoutPage extends HeaderPage {
 
     public CheckoutPage waitForCheckoutPageOpened() {
         Waiter.waitForPageOpened(driver, CONTINUE_BUTTON, 15);
+        log.info("Wait for checkout page opened");
         return this;
     }
 
@@ -33,6 +36,7 @@ public class CheckoutPage extends HeaderPage {
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
         driver.findElement(ZIP_CODE_INPUT).sendKeys(postalCode);
         driver.findElement(CONTINUE_BUTTON).click();
+        log.info("User checkout successfully");
         return new CheckoutOverviewPage(driver);
     }
 }

@@ -28,7 +28,8 @@ public class LoginPage extends BasePage {
      */
     public LoginPage waitForLoginPageOpened() {
         Waiter.waitForPageOpened(driver, LOGIN_BUTTON, 15);
-        return this;
+        log.info("Wait for login page opened");
+        return new LoginPage(driver);
     }
 
     /**
@@ -55,7 +56,7 @@ public class LoginPage extends BasePage {
         driver.findElement(USERNAME_INPUT).sendKeys(user.getUsername());
         driver.findElement(PASSWORD_INPUT).sendKeys(user.getPassword());
         driver.findElement(LOGIN_BUTTON).click();
-        log.info("User registered with data: username is {}", user.getUsername());
+        log.info("User registered with username: '{}'", user.getUsername());
         return new ProductsPage(driver);
     }
 
@@ -65,7 +66,9 @@ public class LoginPage extends BasePage {
      * @return the error message text
      */
     public String getErrorMessageText() {
-        return driver.findElement(ERROR_MASSAGE).getText();
+        String errorMessageText = driver.findElement(ERROR_MASSAGE).getText();
+        log.info("Error message text is: '{}'", errorMessageText);
+        return errorMessageText;
     }
 
     /*public LoginPage waitForPageOpened() {

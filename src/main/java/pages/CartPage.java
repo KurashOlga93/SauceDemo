@@ -31,6 +31,7 @@ public class CartPage extends HeaderPage {
      */
     public CartPage waitForCartPageOpened() {
         Waiter.waitForPageOpened(driver, CHECKOUT_BUTTON, 15);
+        log.info("Wait for cart page opened");
         return this;
     }
 
@@ -55,7 +56,7 @@ public class CartPage extends HeaderPage {
     public CartPage removeProductsFromCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(REMOVE_BUTTON, productName))).click();
-            log.info("Remove product(s) '{}' from cart", productName);
+            log.info("Remove product '{}' from cart", productName);
         }
         return this;
     }
@@ -99,8 +100,8 @@ public class CartPage extends HeaderPage {
      * @return the product name
      */
     public String getProductName(String productName) {
+        log.info("Get product name: {}", productName);
         return driver.findElement(By.xpath(String.format(PRODUCT_NAME, productName))).getText();
-        //log.info("Product name is: {}", productName);
     }
 
     /**

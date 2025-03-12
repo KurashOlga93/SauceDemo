@@ -1,9 +1,11 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import waiters.Waiter;
 
+@Log4j2
 public class ProductsPage extends HeaderPage {
 
     public static final String PRODUCT_ITEM = "//*[text()='%s']/ancestor::*[@class" +
@@ -26,6 +28,7 @@ public class ProductsPage extends HeaderPage {
     public ProductsPage addProductsToCart(String... productNames) {
         for (String productName : productNames) {
             driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).click();
+            log.info("Add product '{}' to cart", productName);
         }
         return this;
     }
@@ -37,6 +40,7 @@ public class ProductsPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isAddToCartButtonDisplayed(String productName) {
+        log.info("Add to cart button  displayed for product(s) '{}' from cart", productName);
         return driver.findElement(By.xpath(String.format(ADD_PRODUCT_TO_CART_BUTTON, productName))).isDisplayed();
     }
 
@@ -47,6 +51,7 @@ public class ProductsPage extends HeaderPage {
      * @return the boolean
      */
     public boolean isRemoveButtonDisplayed(String productName) {
+        log.info("Remove button displayed for product '{}'", productName);
         return driver.findElement(By.xpath(String.format(REMOVE_PRODUCT_FROM_CART_BUTTON, productName))).isDisplayed();
     }
 

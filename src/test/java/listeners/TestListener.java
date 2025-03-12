@@ -22,13 +22,13 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-        log.info("======================================== FINISHED TEST {} Duration: %ss ========================================\n", iTestResult.getName(),
+        log.info("======================================== FINISHED TEST {} Duration: {} ========================================\n", iTestResult.getName(),
                 getExecutionTime(iTestResult));
     }
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
-        log.info("======================================== FAILED TEST {} Duration: %ss ========================================\n", iTestResult.getName(),
+        log.info("======================================== FAILED TEST {} Duration: {} ========================================\n", iTestResult.getName(),
                 getExecutionTime(iTestResult));
         takeScreenshot(iTestResult);
     }

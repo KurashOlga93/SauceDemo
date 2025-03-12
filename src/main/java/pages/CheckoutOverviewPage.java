@@ -1,9 +1,11 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import waiters.Waiter;
 
+@Log4j2
 public class CheckoutOverviewPage extends HeaderPage {
 
     public static final By FINISH_BUTTON = By.id("finish");
@@ -15,6 +17,7 @@ public class CheckoutOverviewPage extends HeaderPage {
 
     public CheckoutOverviewPage waitForCheckoutOverviewPageOpened() {
         Waiter.waitForPageOpened(driver, FINISH_BUTTON, 15);
+        log.info("Wait for checkout overview page opened");
         return this;
     }
 
@@ -30,7 +33,9 @@ public class CheckoutOverviewPage extends HeaderPage {
      *
      * @return the string
      */
-    public String getSuccessText(){
-        return driver.findElement(SUCCESS_TEXT).getText();
+    public String getSuccessText() {
+        String successText = driver.findElement(SUCCESS_TEXT).getText();
+        log.info("Success text is: '{}'", successText);
+        return successText;
     }
 }

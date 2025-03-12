@@ -1,8 +1,10 @@
 package pages;
 
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+@Log4j2
 public class HeaderPage extends BasePage {
 
     public HeaderPage(WebDriver driver) {
@@ -28,6 +30,8 @@ public class HeaderPage extends BasePage {
      * @return the string
      */
     public String checkCartBudgeNumber() {
-        return driver.findElement(CART_BUDGE).getText();
+        String cartBudgeNumber = driver.findElement(CART_BUDGE).getText();
+        log.info("Cart budge number is: {}", cartBudgeNumber);
+        return cartBudgeNumber;
     }
 }
