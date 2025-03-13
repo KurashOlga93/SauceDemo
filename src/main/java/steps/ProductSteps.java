@@ -2,12 +2,14 @@ package steps;
 
 import entity.User;
 import io.qameta.allure.Step;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import pages.LoginPage;
 import pages.ProductsPage;
 
 import static constants.IConstants.LOGIN_PAGE_URL;
 
+@Log4j2
 public class ProductSteps {
     private LoginPage loginPage;
     private ProductsPage productsPage;
