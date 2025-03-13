@@ -36,7 +36,7 @@ public class CheckoutPage extends HeaderPage {
         driver.findElement(LAST_NAME_INPUT).sendKeys(lastName);
         driver.findElement(ZIP_CODE_INPUT).sendKeys(postalCode);
         driver.findElement(CONTINUE_BUTTON).click();
-        log.info("User checkout successfully");
+        log.info("User checkout successfully and redirect to Checkout Overview Page");
         return new CheckoutOverviewPage(driver);
     }
 }
