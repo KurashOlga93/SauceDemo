@@ -4,9 +4,7 @@ import constants.IConstants;
 import entity.User;
 import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import pages.LoginPage;
-import waiters.Waiter;
 
 public class LoginSteps {
     private LoginPage loginPage;
