@@ -25,26 +25,29 @@ pipeline {
             //bat "mvn clean -Dtest=LoginTest test"
          }
 
-//          post {
-//             // If Maven was able to run the tests, even if some of the test
-//             // failed, record the test results and archive the jar file.
-//             success {
-//                junit '**/target/surefire-reports/TEST-*.xml'
-//             }
-//          }
-      }
-      stage('Reporting') {
-         steps {
-             script {
-                     allure([
-                             includeProperties: false,
-                             jdk: '',
-                             properties: [],
-                             reportBuildPolicy: 'ALWAYS',
-                             results: [[path: 'target/allure-results']]
-                     ])
-             }
+         post {
+            // If Maven was able to run the tests, even if some of the test
+            // failed, record the test results and archive the jar file.
+            success {
+                allure includeProperties:
+                         false,
+                         jdk: '',
+                         results: [[path: 'target/allure-results']]
+            }
          }
-        }
+      }
+//       stage('Reporting') {
+//          steps {
+//              script {
+//                      allure([
+//                              includeProperties: false,
+//                              jdk: '',
+//                              properties: [],
+//                              reportBuildPolicy: 'ALWAYS',
+//                              results: [[path: 'target/allure-results']]
+//                      ])
+//              }
+//          }
+//         }
    }
 }
