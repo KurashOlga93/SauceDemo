@@ -1,0 +1,11 @@
+{
+  "name" : "Ivan",
+  "age" : 30,
+  "isStudent" : true,
+  "address" : {
+  "city" : "Moskow",
+    "street" : "Lenins"
+},
+  "hobbies" : ["спорт",
+    "путешествия"]
+}

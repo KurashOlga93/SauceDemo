@@ -1,0 +1,74 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Pets</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<header>
+    <h1>Добро пожаловать на наш сайт!</h1>
+</header>
+<body>
+<p>Здесь вы сможете выбрать лучшие товары для вашего питомца.</p>
+<p>Чтобы узнать больше информации об уходе, переходите по ссылке:</p>
+<p>
+    <a href="https://miska.ru/blog/stati/kak-organizovat-pravilnyy-ukhod-za-zhivotnymi/?srsltid=AfmBOoo8bJK1gpoyB1cwxXByAAVZvQ3ec4dsBsC-88ncS8aTQjP397pk">Уход
+        за питомцами</a></p>
+<img src="https://img.freepik.com/free-photo/closeup-scarlet-macaw-from-side-view-scarlet-macaw-closeup-head_488145-3540.jpg"
+     alt="Попугай" width="200" height="300">
+<p>
+    <label>Выберите питомца:</label>
+    <select name="pets" id="pets">
+        <option value="cats">Кошки</option>
+        <option value="dogs">Собаки</option>
+        <option value="rats">Грызуны</option>
+        <option value="birds">Птицы</option>
+    </select>
+</p>
+<form>
+    <label for="pname">Имя питомца:</label><br>
+    <input type="text" id="pname" name="pname"><br>
+</form>
+<form>
+    <label for="natural">
+        Питомец на натуральном питании
+        <input type="checkbox" id="natural" name="natural" value="Meat">
+    </label>
+    <br>
+    <label for="granules">
+        Питомец на грануллированном корме
+        <input type="checkbox" id="granules" name="granules" value="Granules">
+    </label>
+</form>
+<input type="button" onclick="alert('Информация сохранена!')" value="Сохранить">
+<section>
+    <h3>Таблица норм кормления для животных в сутки:</h3>
+    <table border="2">
+        <tr>
+            <th>Вид питомца</th>
+            <th>Возраст</th>
+            <th>Норма сухого корма</th>
+        </tr>
+        <tr>
+            <td>Кошки</td>
+            <td>от 1 года</td>
+            <td>300 гр</td>
+        </tr>
+        <tr>
+            <td>Собаки</td>
+            <td>от 1 года</td>
+            <td>500 гр</td>
+        </tr>
+        <tr>
+            <td>Грызуны</td>
+            <td>до 2 лет</td>
+            <td>30 гр</td>
+        </tr>
+        <tr>
+            <td>Птицы</td>
+            <td>Любой</td>
+            <td>20 гр</td>
+        </tr>
+    </table>
+</section>
+</body>
+</html>

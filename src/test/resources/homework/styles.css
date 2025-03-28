@@ -1,0 +1,95 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+}
+
+a {
+    display: block;
+    margin-bottom: 10px;
+    color: pink;
+}
+
+a:hover {
+    text-decoration: underline;
+        color: #ff80bf;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    text-align: left;
+    padding: 8px;
+}
+
+th {
+    background-color: #333;
+    color: white;
+}
+
+input[type="text"] {
+    margin-top: 5px;
+}
+
+p, form, section {
+    margin-bottom: 15px;
+}
+
+label {
+    margin-right: 8px;
+    color: #555;
+}
+
+input[type="button"] {
+    padding: 10px 20px;;
+    background-color: pink;
+    font-size: 15px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="button"]:hover {
+    background-color: #ff80bf;
+    color: white;
+}
+
+select {
+    background-color: #f8f8f8;
+    color: #ff80bf;
+    font-size: 14px;
+    padding: 6px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+select:hover {
+    border-color: #888;
+}
+
+option {
+    background-color: white;
+    color: #ff80bf;
+}
