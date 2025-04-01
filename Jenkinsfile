@@ -4,7 +4,6 @@ pipeline {
    tools {
       // Install the Maven version configured as "M3" and add it to the path.
       maven "M3"
-      allure "allure-2.32"
    }
     triggers {
         cron('0 8 * * *')
@@ -30,10 +29,7 @@ pipeline {
 //             // If Maven was able to run the tests, even if some of the test
 //             // failed, record the test results and archive the jar file.
 //             success {
-//                 allure includeProperties:
-//                          false,
-//                          jdk: '',
-//                          results: [[path: 'target/allure-results']]
+//                junit '**/target/surefire-reports/TEST-*.xml'
 //             }
 //          }
       }
