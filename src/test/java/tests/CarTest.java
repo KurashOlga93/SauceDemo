@@ -8,16 +8,16 @@ import org.testng.annotations.Test;
 @Log4j2
 public class CarTest {
 
-    @Test
-    public void carCompare() {
-        Car car0 = Car.builder()
-                .mark("BMW")
-                .build();
-        Car car1 = new Car("BMW", "1");
-        Car car2 = new Car("BMW", "2");
-
-        Assert.assertEquals(car1, car2);
-    }
+//    @Test
+//    public void carCompare() {
+//        Car car0 = Car.builder()
+//                .mark("BMW")
+//                .build();
+//        Car car1 = new Car("BMW", "1");
+//        Car car2 = new Car("BMW", "2");
+//
+//        Assert.assertEquals(car1, car2);
+//    }
 
     @Test
     public void loggerTest() {

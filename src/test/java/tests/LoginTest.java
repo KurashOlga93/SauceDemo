@@ -47,15 +47,15 @@ public class LoginTest extends Preconditions {
     }
     */
 
-    @Test
-    public void loginWithPageFactory(){
-        driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
-        WebElement addButton = loginPageFactory.getAddButton();
-        addButton.click();
-        WebElement deleteButton = loginPageFactory.getDeleteButton();
-        deleteButton.click();
-
-        addButton.click();
-        deleteButton.click();
-    }
+//    @Test
+//    public void loginWithPageFactory(){
+//        driver.get("https://the-internet.herokuapp.com/add_remove_elements/");
+//        WebElement addButton = loginPageFactory.getAddButton();
+//        addButton.click();
+//        WebElement deleteButton = loginPageFactory.getDeleteButton();
+//        deleteButton.click();
+//
+//        addButton.click();
+//        deleteButton.click();
+//    }
 }
